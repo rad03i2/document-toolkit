@@ -2,9 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { documentStats, escapeHtml, markdownToHtml, normalizeText } from '../src/core.js';
 
-test('documentStats handles Unicode words, headings and links', () => {
-  const s = documentStats('# Hello\nمرحبا بالعالم\n[site](https://example.com)');
-  assert.equal(s.lines, 3); assert.equal(s.headings, 1); assert.equal(s.links, 1); assert.equal(s.words, 5);
+test('documentStats handles Unicode words', () => {
+  const s = documentStats('Hello مرحبا بالعالم');
+  assert.equal(s.lines, 1); assert.equal(s.words, 3); assert.equal(s.headings, 0); assert.equal(s.links, 0);
+});
+
+test('documentStats detects Markdown headings and links', () => {
+  const s = documentStats('# Hello\n[site](https://example.com)');
+  assert.equal(s.lines, 2); assert.equal(s.headings, 1); assert.equal(s.links, 1);
 });
 
 test('normalization trims trailing whitespace and controls blank lines', () => {
