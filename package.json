@@ -1,0 +1,16 @@
+{
+  "name": "@rad03i2/document-toolkit",
+  "version": "1.0.0",
+  "description": "Local CLI for document statistics, text normalization, and safe Markdown-to-HTML conversion.",
+  "type": "module",
+  "bin": { "doc-toolkit": "./src/cli.js" },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/core.js && node --check src/cli.js"
+  },
+  "engines": { "node": ">=20" },
+  "keywords": ["documents", "markdown", "cli", "html", "text", "privacy"],
+  "author": "Radwan Abdulhadi Ahmed (@rad03i2)",
+  "license": "MIT",
+  "files": ["src", "README.md", "LICENSE"]
+}
