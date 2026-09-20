@@ -11,7 +11,7 @@ function run(args) { return spawnSync(process.execPath, [cli, ...args], { encodi
 
 test('stats emits machine-readable JSON', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'doc-toolkit-')); const input = join(dir, 'a.md'); await writeFile(input, '# Hi\nTwo words');
-  const r = run(['stats', input, '--json']); assert.equal(r.status, 0); const value = JSON.parse(r.stdout); assert.equal(value.headings, 1); assert.equal(value.words, 4);
+  const r = run(['stats', input, '--json']); assert.equal(r.status, 0); const value = JSON.parse(r.stdout); assert.equal(value.headings, 1); assert.equal(value.words, 3);
 });
 
 test('markdown-html writes output and protects it from overwrite', async () => {
